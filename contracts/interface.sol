@@ -17,3 +17,13 @@ interface Ithird {
      function getMintLimitInfo() external view returns
       (uint256 currentLimit, uint256 rate, uint256 maximum);
 }
+
+// address = 0xfb56F5F6D8D0A712778D82127B25b8533426D785
+interface Ifourth {
+    function hasMinted(address account) external view returns (uint256);
+}
+
+// address = 0x7e897a5FDc03F0E2Cf24b5A7e28B6439F3194de7
+interface Ififth {
+    function totalSupply() external view returns (uint256);
+}
