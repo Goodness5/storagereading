@@ -17,6 +17,7 @@ const config: HardhatUserConfig = {
           enabled: true,
           //@ts-ignore
           url: process.env.MAINETURL,
+          accounts: [process.env.PRIVATE_KEY]
         }
       },
       goerli: {

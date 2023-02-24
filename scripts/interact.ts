@@ -1,4 +1,8 @@
 import { ethers } from "hardhat";
+import Web3 from "web3";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 async function main() {
     const [owner] = await ethers.getSigners();
@@ -18,21 +22,43 @@ async function main() {
     const fifth= "0x7e897a5FDc03F0E2Cf24b5A7e28B6439F3194de7";
     const Ififth = await  ethers.getContractAt("Ififth", fifth);
 
+    const user = "0x8cE2269478D7c8c88cB59D26825Eb3b11702f506";
 
-    const firstint = await Ifirst.getTokenInfo(2);
-    console.log(firstint);
+    //@ts-ignore
+    const web3 = new Web3(process.env.MAINETURL);
 
-    const secondint = await Isecond.connect(owner).getFreeMints(owner);
-    console.log(secondint);
 
-    const thirdint = await Ithird.getMintLimitInfo();
-    console.log(thirdint);
 
-    const fourthint = await Ifourth.hasMinted(owner);
-    console.log(fourthint);
+    const readstorage1 = await web3.eth.getStorageAt(first, 1);
+    console.log("Contract storage at position 1:", readstorage1);
 
-    const fifthint = await Ififth.totalSupply();
-    console.log(fifthint);
+    const readstorage2 = await web3.eth.getStorageAt(second, 0);
+    console.log("Contract storage at position 1:", readstorage2);
+
+    const readstorage3 = await web3.eth.getStorageAt(third, 0);
+    console.log("Contract storage at position 1:", readstorage3);
+
+    const readstorage4 = await web3.eth.getStorageAt(fourth, 2);
+    console.log("Contract storage at position 1:", readstorage4);
+
+    const readstorage5 = await web3.eth.getStorageAt(fifth, 1);
+    console.log("Contract storage at position 1:", readstorage5);
+
+
+    // const firstint = await Ifirst.getTokenInfo(2);
+    // console.log(`token with index 2 is ${firstint}`);
+
+    // const secondint = await Isecond.getFreeMints(user);
+    // console.log(`freeminted ${secondint}`);
+
+    // const thirdint = await Ithird.getMintLimitInfo();
+    // console.log(`mintlimit is ${thirdint}`);
+
+    // const fourthint = await Ifourth.hasMinted(user);
+    // console.log(`user minted ${fourthint}`);
+
+    // const fifthint = await Ififth.totalSupply();
+    // console.log(`totalsupply is ${fifthint}`);
 
 
 
